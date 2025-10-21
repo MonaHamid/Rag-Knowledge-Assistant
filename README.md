@@ -270,7 +270,7 @@ MIT License.
 We extend our sincere gratitude to **Alexey Grigorev** and the **DataTalks Club** team for their expert guidance, valuable Slack support, and for creating this exceptional learning opportunity through the LLM course.
 
 ## 👤 Author
-Developed as part of **LLM Zoomcamp 2025** by **[Your Name]**.
+Developed as part of **LLM Zoomcamp 2025** by **Mona Hamid**.
 
 ---
 
