@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+tqdm
+scikit-learn
+sentence-transformers
+qdrant-client
+openai
+fastembed

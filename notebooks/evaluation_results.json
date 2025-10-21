@@ -1,0 +1,1126 @@
+{
+  "evaluation_dataset": {
+    "What is physics?": {
+      "expected_articles": [
+        "Physics"
+      ],
+      "expected_chunk_types": [
+        "title_beginning",
+        "definitions"
+      ],
+      "query_type": "definition",
+      "difficulty": "easy"
+    },
+    "Define artificial intelligence": {
+      "expected_articles": [
+        "Artificial intelligence"
+      ],
+      "expected_chunk_types": [
+        "definitions",
+        "title_beginning"
+      ],
+      "query_type": "definition",
+      "difficulty": "easy"
+    },
+    "What is quantum mechanics?": {
+      "expected_articles": [
+        "Quantum mechanics"
+      ],
+      "expected_chunk_types": [
+        "title_beginning",
+        "definitions"
+      ],
+      "query_type": "definition",
+      "difficulty": "medium"
+    },
+    "Define machine learning": {
+      "expected_articles": [
+        "Machine learning"
+      ],
+      "expected_chunk_types": [
+        "definitions",
+        "title_beginning"
+      ],
+      "query_type": "definition",
+      "difficulty": "medium"
+    },
+    "What is calculus?": {
+      "expected_articles": [
+        "Calculus"
+      ],
+      "expected_chunk_types": [
+        "title_beginning",
+        "definitions"
+      ],
+      "query_type": "definition",
+      "difficulty": "easy"
+    },
+    "How does photosynthesis work?": {
+      "expected_articles": [
+        "Biology",
+        "Photosynthesis"
+      ],
+      "expected_chunk_types": [
+        "content"
+      ],
+      "query_type": "process",
+      "difficulty": "hard"
+    },
+    "How does machine learning work?": {
+      "expected_articles": [
+        "Machine learning"
+      ],
+      "expected_chunk_types": [
+        "content",
+        "definitions"
+      ],
+      "query_type": "process",
+      "difficulty": "medium"
+    },
+    "Explain DNA structure": {
+      "expected_articles": [
+        "Biology",
+        "Genetics",
+        "DNA"
+      ],
+      "expected_chunk_types": [
+        "content"
+      ],
+      "query_type": "explanation",
+      "difficulty": "hard"
+    },
+    "What is the theory of relativity?": {
+      "expected_articles": [
+        "Physics",
+        "Theory of relativity",
+        "Einstein"
+      ],
+      "expected_chunk_types": [
+        "content",
+        "definitions"
+      ],
+      "query_type": "concept",
+      "difficulty": "hard"
+    },
+    "What is climate change?": {
+      "expected_articles": [
+        "Climate change"
+      ],
+      "expected_chunk_types": [
+        "title_beginning",
+        "definitions"
+      ],
+      "query_type": "definition",
+      "difficulty": "medium"
+    },
+    "What is organic chemistry?": {
+      "expected_articles": [
+        "Chemistry",
+        "Organic chemistry"
+      ],
+      "expected_chunk_types": [
+        "definitions",
+        "title_beginning"
+      ],
+      "query_type": "definition",
+      "difficulty": "medium"
+    },
+    "Define neural networks": {
+      "expected_articles": [
+        "Machine learning",
+        "Artificial intelligence",
+        "Neural networks"
+      ],
+      "expected_chunk_types": [
+        "content",
+        "definitions"
+      ],
+      "query_type": "definition",
+      "difficulty": "hard"
+    },
+    "What is bioinformatics?": {
+      "expected_articles": [
+        "Biology",
+        "Computer science",
+        "Bioinformatics"
+      ],
+      "expected_chunk_types": [
+        "content",
+        "definitions"
+      ],
+      "query_type": "definition",
+      "difficulty": "hard"
+    },
+    "How does evolution work?": {
+      "expected_articles": [
+        "Biology",
+        "Evolution"
+      ],
+      "expected_chunk_types": [
+        "content",
+        "title_beginning"
+      ],
+      "query_type": "process",
+      "difficulty": "medium"
+    },
+    "What is linear algebra?": {
+      "expected_articles": [
+        "Mathematics",
+        "Linear algebra"
+      ],
+      "expected_chunk_types": [
+        "definitions",
+        "title_beginning"
+      ],
+      "query_type": "definition",
+      "difficulty": "medium"
+    }
+  },
+  "metrics_summary": {
+    "bm25": {
+      "precision_at_5": 0.17333333333333337,
+      "recall_at_5": 0.8666666666666667,
+      "mrr": 0.8222222222222223,
+      "high_priority_coverage": 0.2533333333333333,
+      "beginning_content_coverage": 0.8666666666666667
+    },
+    "dense": {
+      "precision_at_5": 0.20000000000000007,
+      "recall_at_5": 0.9333333333333333,
+      "mrr": 0.9333333333333333,
+      "high_priority_coverage": 0.2800000000000001,
+      "beginning_content_coverage": 1.0
+    },
+    "hybrid": {
+      "precision_at_5": 0.2266666666666667,
+      "recall_at_5": 1.0,
+      "mrr": 0.9022222222222223,
+      "high_priority_coverage": 0.6533333333333334,
+      "beginning_content_coverage": 1.0
+    }
+  },
+  "detailed_results": {
+    "bm25": [
+      {
+        "query": "What is physics?",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Physics"
+        ],
+        "retrieved_articles": [
+          "Physics"
+        ],
+        "relevant_found": [
+          "Physics"
+        ]
+      },
+      {
+        "query": "Define artificial intelligence",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Artificial intelligence"
+        ],
+        "retrieved_articles": [
+          "Artificial intelligence"
+        ],
+        "relevant_found": [
+          "Artificial intelligence"
+        ]
+      },
+      {
+        "query": "What is quantum mechanics?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.6,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Quantum mechanics"
+        ],
+        "retrieved_articles": [
+          "Quantum mechanics"
+        ],
+        "relevant_found": [
+          "Quantum mechanics"
+        ]
+      },
+      {
+        "query": "Define machine learning",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 0.0,
+        "expected_articles": [
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Machine learning"
+        ],
+        "relevant_found": [
+          "Machine learning"
+        ]
+      },
+      {
+        "query": "What is calculus?",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.2,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Calculus"
+        ],
+        "retrieved_articles": [
+          "Calculus"
+        ],
+        "relevant_found": [
+          "Calculus"
+        ]
+      },
+      {
+        "query": "How does photosynthesis work?",
+        "query_type": "process",
+        "difficulty": "hard",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0,
+        "mrr": 0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Photosynthesis"
+        ],
+        "retrieved_articles": [
+          "Electrical engineering",
+          "Software engineering",
+          "Thermodynamics"
+        ],
+        "relevant_found": []
+      },
+      {
+        "query": "How does machine learning work?",
+        "query_type": "process",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Machine learning"
+        ],
+        "relevant_found": [
+          "Machine learning"
+        ]
+      },
+      {
+        "query": "Explain DNA structure",
+        "query_type": "explanation",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Genetics",
+          "DNA"
+        ],
+        "retrieved_articles": [
+          "Genetics",
+          "Molecular biology"
+        ],
+        "relevant_found": [
+          "Genetics"
+        ]
+      },
+      {
+        "query": "What is the theory of relativity?",
+        "query_type": "concept",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Physics",
+          "Einstein",
+          "Theory of relativity"
+        ],
+        "retrieved_articles": [
+          "Quantum mechanics",
+          "Mathematics",
+          "Physics"
+        ],
+        "relevant_found": [
+          "Physics"
+        ]
+      },
+      {
+        "query": "What is climate change?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 0.0,
+        "expected_articles": [
+          "Climate change"
+        ],
+        "retrieved_articles": [
+          "Climate change"
+        ],
+        "relevant_found": [
+          "Climate change"
+        ]
+      },
+      {
+        "query": "What is organic chemistry?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.8,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Organic chemistry",
+          "Chemistry"
+        ],
+        "retrieved_articles": [
+          "Organic chemistry"
+        ],
+        "relevant_found": [
+          "Organic chemistry"
+        ]
+      },
+      {
+        "query": "Define neural networks",
+        "query_type": "definition",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Neural networks",
+          "Artificial intelligence",
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Deep learning",
+          "Artificial intelligence"
+        ],
+        "relevant_found": [
+          "Artificial intelligence"
+        ]
+      },
+      {
+        "query": "What is bioinformatics?",
+        "query_type": "definition",
+        "difficulty": "hard",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0,
+        "mrr": 0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Computer science",
+          "Bioinformatics"
+        ],
+        "retrieved_articles": [
+          "Machine learning",
+          "Biomedical engineering",
+          "Computer graphics",
+          "Deep learning",
+          "Discrete mathematics"
+        ],
+        "relevant_found": []
+      },
+      {
+        "query": "How does evolution work?",
+        "query_type": "process",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Evolution"
+        ],
+        "retrieved_articles": [
+          "Evolution"
+        ],
+        "relevant_found": [
+          "Evolution"
+        ]
+      },
+      {
+        "query": "What is linear algebra?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.6,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Mathematics",
+          "Linear algebra"
+        ],
+        "retrieved_articles": [
+          "Linear algebra"
+        ],
+        "relevant_found": [
+          "Linear algebra"
+        ]
+      }
+    ],
+    "dense": [
+      {
+        "query": "What is physics?",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Physics"
+        ],
+        "retrieved_articles": [
+          "Physics"
+        ],
+        "relevant_found": [
+          "Physics"
+        ]
+      },
+      {
+        "query": "Define artificial intelligence",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Artificial intelligence"
+        ],
+        "retrieved_articles": [
+          "Artificial intelligence"
+        ],
+        "relevant_found": [
+          "Artificial intelligence"
+        ]
+      },
+      {
+        "query": "What is quantum mechanics?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.6,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Quantum mechanics"
+        ],
+        "retrieved_articles": [
+          "Quantum mechanics"
+        ],
+        "relevant_found": [
+          "Quantum mechanics"
+        ]
+      },
+      {
+        "query": "Define machine learning",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.6,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Machine learning"
+        ],
+        "relevant_found": [
+          "Machine learning"
+        ]
+      },
+      {
+        "query": "What is calculus?",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.2,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Calculus"
+        ],
+        "retrieved_articles": [
+          "Calculus"
+        ],
+        "relevant_found": [
+          "Calculus"
+        ]
+      },
+      {
+        "query": "How does photosynthesis work?",
+        "query_type": "process",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Photosynthesis"
+        ],
+        "retrieved_articles": [
+          "Biology",
+          "Climate change"
+        ],
+        "relevant_found": [
+          "Biology"
+        ]
+      },
+      {
+        "query": "How does machine learning work?",
+        "query_type": "process",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Machine learning"
+        ],
+        "relevant_found": [
+          "Machine learning"
+        ]
+      },
+      {
+        "query": "Explain DNA structure",
+        "query_type": "explanation",
+        "difficulty": "hard",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Genetics",
+          "DNA"
+        ],
+        "retrieved_articles": [
+          "Biology",
+          "Evolution",
+          "Genetics"
+        ],
+        "relevant_found": [
+          "Biology",
+          "Genetics"
+        ]
+      },
+      {
+        "query": "What is the theory of relativity?",
+        "query_type": "concept",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Physics",
+          "Einstein",
+          "Theory of relativity"
+        ],
+        "retrieved_articles": [
+          "Mathematics",
+          "Physics"
+        ],
+        "relevant_found": [
+          "Physics"
+        ]
+      },
+      {
+        "query": "What is climate change?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Climate change"
+        ],
+        "retrieved_articles": [
+          "Climate change"
+        ],
+        "relevant_found": [
+          "Climate change"
+        ]
+      },
+      {
+        "query": "What is organic chemistry?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.6,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Organic chemistry",
+          "Chemistry"
+        ],
+        "retrieved_articles": [
+          "Organic chemistry"
+        ],
+        "relevant_found": [
+          "Organic chemistry"
+        ]
+      },
+      {
+        "query": "Define neural networks",
+        "query_type": "definition",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.2,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Neural networks",
+          "Artificial intelligence",
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Deep learning",
+          "Artificial intelligence"
+        ],
+        "relevant_found": [
+          "Artificial intelligence"
+        ]
+      },
+      {
+        "query": "What is bioinformatics?",
+        "query_type": "definition",
+        "difficulty": "hard",
+        "precision_at_5": 0.0,
+        "recall_at_5": 0,
+        "mrr": 0,
+        "high_priority_coverage": 0.2,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Computer science",
+          "Bioinformatics"
+        ],
+        "retrieved_articles": [
+          "Medicine",
+          "Genetics",
+          "Molecular biology"
+        ],
+        "relevant_found": []
+      },
+      {
+        "query": "How does evolution work?",
+        "query_type": "process",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Evolution"
+        ],
+        "retrieved_articles": [
+          "Evolution"
+        ],
+        "relevant_found": [
+          "Evolution"
+        ]
+      },
+      {
+        "query": "What is linear algebra?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.2,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Mathematics",
+          "Linear algebra"
+        ],
+        "retrieved_articles": [
+          "Linear algebra"
+        ],
+        "relevant_found": [
+          "Linear algebra"
+        ]
+      }
+    ],
+    "hybrid": [
+      {
+        "query": "What is physics?",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 1.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Physics"
+        ],
+        "retrieved_articles": [
+          "Chemistry",
+          "Quantum mechanics",
+          "Physics",
+          "Electromagnetism"
+        ],
+        "relevant_found": [
+          "Physics"
+        ]
+      },
+      {
+        "query": "Define artificial intelligence",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.6,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Artificial intelligence"
+        ],
+        "retrieved_articles": [
+          "Artificial intelligence"
+        ],
+        "relevant_found": [
+          "Artificial intelligence"
+        ]
+      },
+      {
+        "query": "What is quantum mechanics?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 1.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Quantum mechanics"
+        ],
+        "retrieved_articles": [
+          "Quantum mechanics",
+          "Physics"
+        ],
+        "relevant_found": [
+          "Quantum mechanics"
+        ]
+      },
+      {
+        "query": "Define machine learning",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 1.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Machine learning"
+        ],
+        "relevant_found": [
+          "Machine learning"
+        ]
+      },
+      {
+        "query": "What is calculus?",
+        "query_type": "definition",
+        "difficulty": "easy",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.8,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Calculus"
+        ],
+        "retrieved_articles": [
+          "Calculus"
+        ],
+        "relevant_found": [
+          "Calculus"
+        ]
+      },
+      {
+        "query": "How does photosynthesis work?",
+        "query_type": "process",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Photosynthesis"
+        ],
+        "retrieved_articles": [
+          "Biology",
+          "Climate change"
+        ],
+        "relevant_found": [
+          "Biology"
+        ]
+      },
+      {
+        "query": "How does machine learning work?",
+        "query_type": "process",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 1.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Machine learning"
+        ],
+        "relevant_found": [
+          "Machine learning"
+        ]
+      },
+      {
+        "query": "Explain DNA structure",
+        "query_type": "explanation",
+        "difficulty": "hard",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Genetics",
+          "DNA"
+        ],
+        "retrieved_articles": [
+          "Biology",
+          "Evolution",
+          "Genetics"
+        ],
+        "relevant_found": [
+          "Biology",
+          "Genetics"
+        ]
+      },
+      {
+        "query": "What is the theory of relativity?",
+        "query_type": "concept",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Physics",
+          "Einstein",
+          "Theory of relativity"
+        ],
+        "retrieved_articles": [
+          "Mathematics",
+          "Physics"
+        ],
+        "relevant_found": [
+          "Physics"
+        ]
+      },
+      {
+        "query": "What is climate change?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Climate change"
+        ],
+        "retrieved_articles": [
+          "Climate change"
+        ],
+        "relevant_found": [
+          "Climate change"
+        ]
+      },
+      {
+        "query": "What is organic chemistry?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.4,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 1.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Organic chemistry",
+          "Chemistry"
+        ],
+        "retrieved_articles": [
+          "Organic chemistry",
+          "Chemistry"
+        ],
+        "relevant_found": [
+          "Organic chemistry",
+          "Chemistry"
+        ]
+      },
+      {
+        "query": "Define neural networks",
+        "query_type": "definition",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 0.2,
+        "high_priority_coverage": 0.8,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Neural networks",
+          "Artificial intelligence",
+          "Machine learning"
+        ],
+        "retrieved_articles": [
+          "Deep learning",
+          "Artificial intelligence"
+        ],
+        "relevant_found": [
+          "Artificial intelligence"
+        ]
+      },
+      {
+        "query": "What is bioinformatics?",
+        "query_type": "definition",
+        "difficulty": "hard",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 0.3333333333333333,
+        "high_priority_coverage": 0.8,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Computer science",
+          "Bioinformatics"
+        ],
+        "retrieved_articles": [
+          "Biology",
+          "Molecular biology"
+        ],
+        "relevant_found": [
+          "Biology"
+        ]
+      },
+      {
+        "query": "How does evolution work?",
+        "query_type": "process",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 0.4,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Biology",
+          "Evolution"
+        ],
+        "retrieved_articles": [
+          "Evolution"
+        ],
+        "relevant_found": [
+          "Evolution"
+        ]
+      },
+      {
+        "query": "What is linear algebra?",
+        "query_type": "definition",
+        "difficulty": "medium",
+        "precision_at_5": 0.2,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "high_priority_coverage": 1.0,
+        "beginning_content_coverage": 1.0,
+        "expected_articles": [
+          "Mathematics",
+          "Linear algebra"
+        ],
+        "retrieved_articles": [
+          "Linear algebra"
+        ],
+        "relevant_found": [
+          "Linear algebra"
+        ]
+      }
+    ]
+  }
+}

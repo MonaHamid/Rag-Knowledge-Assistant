@@ -1,0 +1,41 @@
+question,mode,factuality,relevance,fluency,time_s
+What is the process of photosynthesis and why is it important to life on Earth?,zero_shot,0.98,0.97,0.99,1.04
+What is the process of photosynthesis and why is it important to life on Earth?,few_shot,0.95,0.98,0.92,2.03
+What is the process of photosynthesis and why is it important to life on Earth?,cot,0.99,0.98,0.99,1.33
+What is the process of photosynthesis and why is it important to life on Earth?,rag,0.98,0.95,0.97,1.08
+How does DNA store genetic information within living organisms?,zero_shot,0.98,0.95,0.97,0.9
+How does DNA store genetic information within living organisms?,few_shot,0.95,0.95,0.92,0.68
+How does DNA store genetic information within living organisms?,cot,0.99,0.98,0.98,0.94
+How does DNA store genetic information within living organisms?,rag,0.98,0.99,0.97,0.9
+What are the key differences between machine learning and deep learning?,zero_shot,0.99,0.98,0.99,1.01
+What are the key differences between machine learning and deep learning?,few_shot,0.95,0.98,0.97,0.94
+What are the key differences between machine learning and deep learning?,cot,0.95,0.98,0.99,1.12
+What are the key differences between machine learning and deep learning?,rag,0.95,0.98,0.92,1.03
+Explain how the human respiratory system functions during inhalation and exhalation.,zero_shot,0,0,0,5.04
+Explain how the human respiratory system functions during inhalation and exhalation.,few_shot,0.98,0.99,0.97,0.82
+Explain how the human respiratory system functions during inhalation and exhalation.,cot,0.95,0.98,0.92,1.21
+Explain how the human respiratory system functions during inhalation and exhalation.,rag,0.99,0.98,0.99,1.02
+What are the main laws of thermodynamics and how do they relate to energy transfer?,zero_shot,0.99,0.98,0.99,1.11
+What are the main laws of thermodynamics and how do they relate to energy transfer?,few_shot,0.99,0.98,0.99,0.96
+What are the main laws of thermodynamics and how do they relate to energy transfer?,cot,0.98,0.99,0.97,1.08
+What are the main laws of thermodynamics and how do they relate to energy transfer?,rag,0.98,0.95,0.97,1.16
+Describe how neural networks learn from data and adjust their parameters.,zero_shot,0.99,0.98,0.97,1.19
+Describe how neural networks learn from data and adjust their parameters.,few_shot,0.98,0.99,0.97,0.76
+Describe how neural networks learn from data and adjust their parameters.,cot,0.95,0.92,0.98,1.28
+Describe how neural networks learn from data and adjust their parameters.,rag,0.98,0.95,0.99,1.61
+How does the internet protocol (IP) enable communication between computers?,zero_shot,0.95,0.98,0.92,1.45
+How does the internet protocol (IP) enable communication between computers?,few_shot,0.95,1.0,0.98,0.9
+How does the internet protocol (IP) enable communication between computers?,cot,0.95,0.9,0.92,1.45
+How does the internet protocol (IP) enable communication between computers?,rag,0.95,0.98,0.97,2.81
+What are black holes and how are they detected by astronomers?,zero_shot,0.98,0.95,0.97,2.72
+What are black holes and how are they detected by astronomers?,few_shot,0.95,0.98,0.97,1.02
+What are black holes and how are they detected by astronomers?,cot,0.95,0.92,0.98,1.14
+What are black holes and how are they detected by astronomers?,rag,0.95,0.98,0.99,0.99
+How does artificial intelligence differ from traditional computer programming?,zero_shot,0.95,0.95,0.98,1.0
+How does artificial intelligence differ from traditional computer programming?,few_shot,0.95,0.95,0.98,0.43
+How does artificial intelligence differ from traditional computer programming?,cot,0.95,0.98,0.99,1.12
+How does artificial intelligence differ from traditional computer programming?,rag,0.95,0.98,0.99,0.78
+What causes climate change and what are its primary environmental impacts?,zero_shot,0.95,0.98,0.99,1.04
+What causes climate change and what are its primary environmental impacts?,few_shot,0.98,0.99,0.97,0.88
+What causes climate change and what are its primary environmental impacts?,cot,0.95,0.92,0.98,1.07
+What causes climate change and what are its primary environmental impacts?,rag,0.95,0.98,0.99,1.28
