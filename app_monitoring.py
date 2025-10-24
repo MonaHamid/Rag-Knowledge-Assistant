@@ -56,6 +56,9 @@ TAVILY_API_KEY = get_secret("TAVILY_API_KEY", "")
 QDRANT_URL = get_secret("QDRANT_URL", "")
 QDRANT_API_KEY = get_secret("QDRANT_API_KEY", "")
 
+PROM_USERNAME = get_secret("PROM_USERNAME", "")
+PROM_API_KEY = get_secret("PROM_API_KEY", "")
+
 # Optional for Grafana/Prometheus Pushgateway
 PUSHGATEWAY_URL = get_secret("PUSHGATEWAY_URL", "")  # e.g. http://<host>:9091
 PROM_JOB_NAME = get_secret("PROM_JOB_NAME", "pikaplexity_streamlit")
