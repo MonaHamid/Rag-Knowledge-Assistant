@@ -7,4 +7,7 @@ httpx
 python-dotenv
 numpy
 faiss-cpu>=1.11.0
+pandas
+altair
+prometheus-client==0.20.0
 
