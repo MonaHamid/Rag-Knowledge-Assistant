@@ -123,25 +123,34 @@ MET_LIVE_USERS = Gauge(
 
 # tiny helper for pushgateway
 
-def push_metrics():
-    if not PUSHGATEWAY_URL or not PROM_USERNAME or not PROM_API_KEY:
-        st.session_state["prometheus_error"] = "Missing Grafana credentials"
+ddef push_metrics():
+    """Push metrics to Grafana Cloud remote_write endpoint via HTTP POST."""
+    if not (PUSHGATEWAY_URL and PROM_API_KEY and PROM_USERNAME):
         return
 
     try:
-        # ✅ CORRECT endpoint for Grafana Cloud Pushgateway
-        resp = requests.post(
-            PUSHGATEWAY_URL,
-            data=generate_latest(registry),
-            headers={"Content-Type": "text/plain"},
-            auth=(PROM_USERNAME, PROM_API_KEY),
-            timeout=10,
-        )
+        # Basic Auth: username is stack ID, password is API key
+        auth_str = f"{PROM_USERNAME}:{PROM_API_KEY}"
+        b64_auth = base64.b64encode(auth_str.encode()).decode()
 
-        if resp.status_code not in (200, 202):
+        # Collect metrics data from registry
+        data = []
+        for metric in registry.collect():
+            for sample in metric.samples:
+                line = f"{sample.name}{{"
+                labels = ",".join([f'{k}="{v}"' for k, v in sample.labels.items()])
+                line += labels + f"}} {sample.value}\n"
+                data.append(line)
+        metrics_data = "".join(data)
+
+        headers = {
+            "Authorization": f"Basic {b64_auth}",
+            "Content-Type": "text/plain",
+        }
+
+        resp = requests.post(PUSHGATEWAY_URL, data=metrics_data, headers=headers)
+        if resp.status_code != 200:
             st.session_state["prometheus_error"] = f"Grafana push failed [{resp.status_code}]: {resp.text}"
-        else:
-            st.session_state["prometheus_error"] = ""
     except Exception as e:
         st.session_state["prometheus_error"] = str(e)
 
