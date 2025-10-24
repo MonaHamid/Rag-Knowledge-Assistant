@@ -121,40 +121,26 @@ MET_LIVE_USERS = Gauge(
 # tiny helper for pushgateway
 
 def push_metrics():
-    """
-    Push metrics to Grafana Cloud's Prometheus endpoint using Basic Auth.
-    This safely handles missing credentials and logs any failure in Streamlit session state.
-    """
-    if not PUSHGATEWAY_URL:
+    if not PUSHGATEWAY_URL or not PROM_USERNAME or not PROM_API_KEY:
+        st.session_state["prometheus_error"] = "Missing Grafana credentials"
         return
 
     try:
-        # Prepare Basic Auth for Grafana Cloud (username = numeric ID, password = API key)
-        auth = None
-        if "PROM_USERNAME" in st.secrets and "PROM_API_KEY" in st.secrets:
-            auth = (st.secrets["PROM_USERNAME"], st.secrets["PROM_API_KEY"])
-
-        # Construct full push URL (Grafana uses /metrics/job/<job>/instance/<instance>)
-        push_url = f"{PUSHGATEWAY_URL}/metrics/job/{PROM_JOB_NAME}/instance/{PROM_INSTANCE}"
-
-        # Send metrics as plaintext via HTTP POST
-        response = requests.post(
-            push_url,
+        # ✅ CORRECT endpoint for Grafana Cloud Pushgateway
+        resp = requests.post(
+            PUSHGATEWAY_URL,
             data=generate_latest(registry),
             headers={"Content-Type": "text/plain"},
-            auth=auth,
+            auth=(PROM_USERNAME, PROM_API_KEY),
             timeout=10,
         )
 
-        # Verify response status
-        if response.status_code not in (200, 202):
-            st.session_state["prometheus_error"] = (
-                f"Grafana push failed [{response.status_code}]: {response.text[:150]}"
-            )
-
+        if resp.status_code not in (200, 202):
+            st.session_state["prometheus_error"] = f"Grafana push failed [{resp.status_code}]: {resp.text}"
+        else:
+            st.session_state["prometheus_error"] = ""
     except Exception as e:
-        # Non-fatal: log the error and continue app execution
-        st.session_state["prometheus_error"] = f"Metrics push error: {e}"
+        st.session_state["prometheus_error"] = str(e)
 
 # -----------------------------
 # 5️⃣ Qdrant Search Helper
