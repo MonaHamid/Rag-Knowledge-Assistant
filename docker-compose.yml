@@ -1,0 +1,34 @@
+services:
+  # 🟢 STREAMLIT SERVICE
+  streamlit:
+    build: .                    # Builds from your local Dockerfile
+    container_name: pikaplexity_app
+    command: ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    ports:
+      - "8501:8501"             # Expose Streamlit on localhost:8501
+    env_file:
+      - .env                    # Load your QDRANT_URL, API keys, etc.
+    depends_on:
+      - qdrant                  # Wait until Qdrant DB is ready
+    restart: always             # Auto-restart on crash
+
+  # 🟣 QDRANT VECTOR DATABASE
+  qdrant:
+    image: qdrant/qdrant:v1.7.3
+    container_name: qdrant_db
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./qdrant_data:/qdrant/storage
+    restart: always
+
+  # 🟠 DLT INGESTION SERVICE (runs once, populates Qdrant)
+  dlt_ingest:
+    build: .
+    container_name: dlt_ingest_service
+    command: ["python", "dlt_ingest.py"]
+    env_file:
+      - .env
+    depends_on:
+      - qdrant
+    restart: "no"               # Run once and exit cleanly

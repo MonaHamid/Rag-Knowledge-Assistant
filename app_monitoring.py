@@ -31,6 +31,7 @@ from sentence_transformers import SentenceTransformer
 from groq import Groq
 from qdrant_client import QdrantClient
 from prometheus_client import generate_latest 
+from prometheus_client import start_http_server
 
 # Prometheus
 from prometheus_client import CollectorRegistry, Counter, Histogram, Gauge, push_to_gateway
@@ -460,3 +461,6 @@ with st.container():
         f"<div class='footer'>⚡ Built with ❤️ by Fareeda — PikaPlexity powered by Groq, Qdrant & Tavily 🧠{prom_msg}</div>",
         unsafe_allow_html=True,
     )
+# Start a small background thread serving /metrics
+start_http_server(8000)
+st.write("✅ Prometheus metrics available at :8000/metrics")
