@@ -2,9 +2,11 @@
 
 ![RAG Knowledge Assistant](https://cdn.abacus.ai/images/b1aab930-778c-4272-af2a-c6cec2d46ebb.png)
 
-A Perplexity-style Retrieval-Augmented Generation (RAG) chatbot designed to provide reliable, explainable, and intelligent responses to domain-specific queries across Science, Technology, Mathematics, History, and Medicine using hybrid retrieval, web search fallback, and advanced prompting techniques with multiple LLMs.
+⚡ PikaPlexity — RAG Knowledge Assistant
 
-This project is built as part of the LLM Zoomcamp (DataTalksClub) and meets all evaluation criteria required for certification.
+PikaPlexity is a Retrieval-Augmented Generation (RAG) assistant that combines semantic search, keyword fallback, and LLM reasoning to produce grounded, cited answers with a friendly Streamlit UI and a built-in monitoring dashboard.
+
+Built as part of DataTalksClub LLM Zoomcamp 2025, this project aligns with the rubric across ingestion, monitoring, containerization, reproducibility, and best practices
 
 ## 🚀 Problem Description
 Access to reliable domain-specific information is often scattered across multiple sources and general-purpose chatbots may produce hallucinations or inaccurate responses when dealing with specialized queries in Science, Technology, Mathematics, History, and Medicine.
@@ -28,53 +30,67 @@ This project solves that problem by:
 ## 📂 Project Structure
 ```
 rag-knowledge-assistant/
-│── app.py                  # Streamlit UI
-│── run_all.sh              # One-command script (setup + ingestion + run)
-│── requirements.txt        # Dependencies (main)
-│── requirements-dev.txt    # Dev dependencies (linting, testing, CI)
-│── docker-compose.yml      # Container orchestration
-│── Dockerfile              # Main app container
-│
-├── data/
-│   ├── raw/                # Wikipedia knowledge base (150 articles, 5 domains)
-│   ├── processed/          # Cleaned and chunked data
-│   └── feedback.csv        # User feedback
-│
-├── pipeline/
-│   ├── ingest.py           # Automated ingestion pipeline
-│   ├── prefect_flows.py    # Prefect orchestration workflows
-│   └── dlt_pipeline.py     # DLT data loading pipeline
-│
-├── retrieval/
-│   ├── retriever.py        # Hybrid retrieval logic (Perplexity-style)
-│   ├── faiss_store.py      # FAISS vector database operations
-│   ├── chroma_store.py     # ChromaDB vector database operations
-│   ├── web_search.py       # Web search fallback
-│   └── chunking.py         # Document chunking strategies
-│
-├── llm/
-│   ├── prompting.py        # Zero-shot, Few-shot, CoT prompting
-│   ├── groq_client.py      # Groq API integration
-│   └── evaluation.py       # LLM response evaluation
-│
-├── evaluation/
-│   ├── retrieval_eval.py   # Evaluation of retrieval methods
-│   └── llm_eval.py         # Prompt and output evaluation
-│
-├── monitoring/
-│   ├── grafana/            # Grafana dashboards and configs
-│   │   ├── dashboards/     # JSON dashboard definitions
-│   │   └── provisioning/   # Data source configurations
-│   ├── metrics.py          # Custom metrics collection
-│   └── prometheus.py       # Prometheus metrics exporter
-│
-└── .github/workflows/
-    └── ci.yml              # Continuous integration pipeline
+├─ .devcontainer/
+├─ .github/
+│  └─ workflows/            # (optional CI if added)
+├─ data/
+│  ├─ dlt_output/           # DLT backup output
+│  └─ wikipedia_knowledge_base_balanced.csv
+├─ evaluation/
+│  ├─ evaluate_llm_judge.py
+│  ├─ llm_eval_multimodel.py
+│  ├─ llm_eval_prompting.py
+│  ├─ llm_eval.py
+│  └─ rag_inference_tavily.py
+├─ notebooks/
+│  ├─ data/processed/
+│  │  ├─ hybrid_chunks.pkl
+│  │  ├─ retrieval_system_embeddings.npy
+│  │  ├─ retrieval_system_index.faiss
+│  │  └─ retrieval_system_metadata.pkl
+│  ├─ reports/figures/
+│  │  ├─ knowledge_base_analysis.png
+│  │  ├─ chunking_methods.ipynb
+│  │  └─ (place your architecture here) → architecture.png
+│  ├─ comprehensive_evaluation.ipynb
+│  ├─ data_analysis.ipynb
+│  ├─ embedding_creation.ipynb
+│  ├─ enhanced_answergeneration.ipynb
+│  ├─ hybrid_chunking.ipynb
+│  └─ llm_eval.ipynb
+├─ results/
+│  ├─ evaluation_results.json
+│  ├─ llm_eval_results.csv
+│  └─ test_questions.json
+├─ src/
+│  ├─ faiss_to_qdrant.py
+│  ├─ rag_tavily_pipeline.py
+│  └─ rebuild_faiss.py
+├─ app.py                    # Streamlit chat app
+├─ app_monitoring.py         # Streamlit monitoring dashboard
+├─ dlt_ingest.py             # DLT → Qdrant ingestion
+├─ docker-compose.yml
+├─ Dockerfile
+├─ Procfile                  # (for PaaS where needed)
+├─ prometheus.yml            # (unused now; Streamlit handles monitoring)
+├─ requirements.txt
+├─ setup.sh
+├─ .env                      # your secrets (not committed)
+└─ README.md
+
 ```
+##Technologies Used
+LLM: Groq — Llama-3.3-70B (versatile)
+Vector DB: Qdrant Cloud (with FAISS tooling for local/one-off conversions)
+Frontend & Monitoring: Streamlit (chat UI + dashboards)
+Ingestion: DLT (Data Load Tool) → embeddings via sentence-transformers
+Web Search Fallback: Tavily API
+Containerization: Docker & Docker Compose
+Artifacts/Logs: CSVs (data/user_feedback.csv, data/interactions.csv
 
 ## 🔎 Retrieval Flow (Perplexity-Style)
 1. **User query** → Domain classification and intent analysis
-2. **Dual Vector Search** → Parallel search in FAISS (speed) + ChromaDB (metadata filtering)
+2. **Dual Vector Search** → Parallel search in FAISS (speed) +  (metadata filtering)
 3. **Hybrid Retrieval** → TF-IDF + Dense embeddings across 5 domains
 4. **Confidence Check** → Determines if web search is needed based on domain coverage
 5. **Web Search Fallback** → DuckDuckGo/Tavily API for current information
@@ -83,28 +99,28 @@ rag-knowledge-assistant/
 8. **LLM Generation** → Groq API models generate grounded response with citations
 9. **UI Display** → Perplexity-style answer with transparent source links
 
-**Architecture Diagram:**
+
+### Pipeline Architecture:
 ```
-User Query → Domain Classification → Dual Vector Search → Confidence Check → Web Search
-     ↓              ↓                      ↓                ↓              ↓
-5 Domains → Intent Analysis → FAISS + ChromaDB → Threshold → DuckDuckGo/Tavily
-     ↓              ↓                      ↓                ↓              ↓
-Science/Tech → Prompting Strategy → Context Assembly → LLM (Groq) → Cited Response
-Math/History        ↓                      ↓                ↓              ↓
-Medicine    Zero/Few-shot/CoT → Source Attribution → Generation → UI Display
-                    ↓                      ↓                ↓              ↓
-              Prefect/DLT → Grafana Monitoring → Prometheus → Metrics
+Wikipedia API → DLT → Data Validation → Chunking → Embedding → FAISS + QDrant
+      ↓           ↓           ↓            ↓          ↓              ↓
+   Prefect → Data Quality → Domain → Sentence → Vector → Dual Storage
+   Flows     Monitoring   Classification  Transformers  Generation   System
 ```
 
 ## 📊 Evaluation
 We evaluated multiple retrieval methods, vector databases, chunking strategies, prompting techniques, and Groq API models.
 
-### Vector Database Performance
-| Database | Query Speed | Metadata Filtering | Scalability | Memory Usage | Selected |
-|----------|-------------|-------------------|-------------|--------------|----------|
-| FAISS Only | 0.05s | Limited | High | Low | |
-| ChromaDB Only | 0.12s | Excellent | Medium | Medium | |
-| Dual (FAISS + ChromaDB) | 0.08s | Excellent | High | Medium | ✅ |
+## 📊 Evaluation Summary
+
+### Retrieval Evaluation
+
+| Method | Cosine Sim | Recall@5 | Precision@5 | MRR | Notes |
+|--------|------------:|-----------:|--------------:|------:|-------|
+| FAISS (Local) | 0.73 | 0.81 | 0.76 | 0.68 | Baseline |
+| **Qdrant (Cloud)** | **0.81** | **0.89** | **0.84** | **0.77** | ✅ Selected |
+| Hybrid (Vector + Keyword) | 0.79 | 0.91 | 0.82 | 0.75 | Best Coverage |
+
 
 ### Retrieval Evaluation (Domain-Specific)
 | Method | Science | Technology | Mathematics | History | Medicine | Overall | Selected |
@@ -114,20 +130,41 @@ We evaluated multiple retrieval methods, vector databases, chunking strategies, 
 | Hybrid | 0.84 | 0.82 | 0.86 | 0.81 | 0.85 | 0.84 | ✅ |
 | Priority Weighted | 0.87 | 0.85 | 0.89 | 0.84 | 0.88 | 0.87 | ✅ |
 
-### Prompting Strategy Evaluation
-| Strategy | Factuality | Relevance | Citation Quality | Latency | Selected |
-|----------|------------|-----------|------------------|---------|----------|
-| Zero-shot | 0.78 | 0.75 | 0.72 | 1.2s | ✅ |
-| Few-shot | 0.85 | 0.82 | 0.88 | 1.8s | ✅ |
-| Chain-of-Thought | 0.89 | 0.87 | 0.85 | 2.3s | ✅ |
 
-### Groq API Model Evaluation
-| Model | Speed | Quality | Domain Coverage | Cost | Selected |
-|-------|-------|---------|-----------------|------|----------|
-| Llama-3.1-8B-Instant | 0.3s | 0.82 | 0.85 | Free | ✅ |
-| Llama-3.1-70B-Versatile | 0.8s | 0.91 | 0.93 | Free | ✅ |
-| Mixtral-8x7B-32768 | 0.6s | 0.87 | 0.89 | Free | ✅ |
-| Gemma-7B-IT | 0.4s | 0.79 | 0.81 | Free | |
+### LLM Prompt Evaluation
+
+| Prompt Type | Factuality | Relevance | Fluency | Selected |
+|--------------|------------:|-----------:|----------:|-----------|
+| Zero-shot | 0.72 | 0.70 | 0.85 | – |
+| Few-shot (Tutor Style) | 0.80 | 0.78 | 0.87 | ✅ |
+| Chain-of-Thought | 0.84 | 0.82 | 0.85 | ✅ |
+
+✅ **Winner:** Few-shot Prompt with Llama-3.3-70B (Groq)  
+✅ Evaluated using LLM-as-a-Judge (`evaluate_llm_judge.py`)
+
+##Chunking Evaluation — Hybrid & Weighted Chunking
+Method	Description	Result
+Fixed-size (500 tokens)	Equal token splits	Fast, but context loss
+Semantic chunking (via sentence-transformers)	Splits at topic boundaries	Best accuracy for recall
+Weighted hybrid chunking	Combines semantic boundaries + token overlap	Chosen final (0.81 cosine sim)
+
+✅ Weighted hybrid chunking improved retrieval accuracy by +8% over simple fixed chunks.
+✅ Supports Best Practices (Hybrid Search + Chunk Optimization).
+
+## ⚙️ Ingestion Pipeline (DLT → Qdrant)
+
+**Steps:**
+1. Load `wikipedia_knowledge_base_balanced.csv`  
+2. Split into semantic chunks + generate embeddings  
+3. Create / update Qdrant collection  
+4. Upsert records and store stats in `dlt_output/`
+
+**Run locally:**
+```bash
+python dlt_ingest.py
+```
+
+---
 
 ## 💻 Interface (Perplexity-Style)
 The project provides:
@@ -146,101 +183,96 @@ The project provides:
 - **Automated embedding generation** using sentence-transformers
 - **Pipeline monitoring** with Grafana dashboards tracking data quality and processing metrics
 
-### Pipeline Architecture:
-```
-Wikipedia API → DLT → Data Validation → Chunking → Embedding → FAISS + ChromaDB
-      ↓           ↓           ↓            ↓          ↓              ↓
-   Prefect → Data Quality → Domain → Sentence → Vector → Dual Storage
-   Flows     Monitoring   Classification  Transformers  Generation   System
-```
 
-## 📈 Monitoring (Grafana + Prometheus)
-The Grafana monitoring system provides:
+## 💻 Interfaces
 
-### **System Performance Dashboard:**
-- Query response times across domains
-- Vector database performance (FAISS vs ChromaDB)
-- LLM API latency and error rates
-- Memory and CPU usage metrics
+### **Streamlit Chat App (`app.py`)**
+- Ask questions  
+- See retrieved sources & citations  
+- Generate quick quizzes & YouTube recommendations
 
-### **Business Metrics Dashboard:**
-- User engagement by domain
-- Query volume trends and patterns
-- Retrieval quality metrics (precision@k) by domain
-- Prompting strategy effectiveness
-- Web search fallback usage statistics
+  ![Screenshot 2025-10-23 212319](https://github.com/user-attachments/assets/3378aa69-1b80-4166-85f0-71c82da803ec)
 
-### **Data Pipeline Dashboard:**
-- Prefect workflow execution status
-- DLT pipeline health and data quality
-- Embedding generation performance
-- Vector database indexing metrics
+  ![Screenshot 2025-10-23 200109](https://github.com/user-attachments/assets/6a5671aa-3711-4785-b8a5-5291abaa1353)
 
-### **Custom Metrics:**
-- Domain-specific user satisfaction scores
-- Source citation accuracy rates
-- Response relevance ratings
-- System uptime and availability
+
+
+### **Monitoring Dashboard (`app_monitoring.py`)**
+Visualizes:
+- 🔹 Query volume & frequency  
+- 🔹 Response latency  
+- 🔹 Feedback distribution (👍 / 👎)  
+- 🔹 Top topics queried  
+- 🔹 Retrieval success rates  
+
+<img width="958" height="386" alt="image" src="https://github.com/user-attachments/assets/50fc0245-824d-4c0d-9fbc-883cf971ca44" />
+
+<img width="889" height="371" alt="image" src="https://github.com/user-attachments/assets/87953b2d-244e-4cf6-942c-74c3c2ca93e5" />
+
+<img width="833" height="281" alt="image" src="https://github.com/user-attachments/assets/434ea448-1d86-4969-8d7c-0596c9c95e58" />
+
+<img width="947" height="343" alt="image" src="https://github.com/user-attachments/assets/74e6b74a-c579-417a-986c-de8cd9f054e2" />
+
+
 
 ## 📦 Containerization & Orchestration
 The app is fully containerized with production-ready orchestration:
+## 🐳 Running with Docker
 
-```yaml
-# docker-compose.yml includes:
-services:
-  - app: Main Streamlit application
-  - faiss-db: FAISS vector database
-  - chroma-db: ChromaDB instance
-  - prometheus: Metrics collection
-  - grafana: Monitoring dashboards
-  - prefect-server: Workflow orchestration
-```
-
-Run locally with:
-```bash
-docker-compose up --build
-```
-
-## 🔁 Reproducibility
-- Clear setup instructions in this README
-- Complete dataset provided in `data/raw/` (150 articles, 5 domains)
-- `requirements.txt` with pinned versions
-- `run_all.sh` script automates testing, ingestion, and app startup
-- **Prefect flows** ensure consistent pipeline execution
-- **DLT schemas** guarantee data consistency
+`docker-compose.yml` includes:
+- **streamlit** → main app  
+- **qdrant** → vector database  
+- **dlt_ingest** → ingestion service
 
 ```bash
-./run_all.sh
+docker compose up --build
 ```
+
+Visit: [http://localhost:8501](http://localhost:8501)
+
+```
+
+### 🔁 Reproducibility
+
+### Option 1 — Docker (Recommended)
+```bash
+git clone https://github.com/fareedahab/rag-knowledge-assistant.git
+cd rag-knowledge-assistant
+docker compose up --build
+```
+
+### Option 2 — Manual Setup
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python dlt_ingest.py
+streamlit run app.py
+```
+
+
 
 ## 🌐 Deployment
-The app is deployable to Render, Railway, or Vercel with full monitoring stack.
+
+Deployed on **Streamlit Cloud**
+or run locally with Docker as shown above.
+
+---
+
+## 🔮 Future Enhancements
+
+- Multi-modal retrieval (images + text)  
+- Voice query integration (Vapi SDK)  
+- Personalized topic memory profiles  
+- Advanced Streamlit analytics for model drift  
+
+---
 
 ### Environment Variables Required:
 - `GROQ_API_KEY` (required - provides free access to Llama, Mixtral, Gemma models)
-- `PREFECT_API_KEY` (optional - for cloud orchestration)
-- `GRAFANA_ADMIN_PASSWORD` (required - for monitoring access)
 - `PROMETHEUS_CONFIG` (optional - custom metrics configuration)
-- `TAVILY_API_KEY` (optional - better web search)
+- `QDRANT_API_KEY` (for vector search)
 
-### Deploy to Render:
-```bash
-git init
-git add .
-git commit -m "Deploy RAG Assistant with Monitoring"
-git remote add render https://git.render.com/your-app-url.git
-git push render main
-```
-
-## 🧪 CI/CD
-`.github/workflows/ci.yml` runs:
-- Unit tests for all components
-- Domain-specific retrieval evaluation benchmarks
-- Vector database performance tests
-- Prompting strategy performance tests
-- Groq API integration tests
-- Prefect workflow validation
-- Grafana dashboard configuration tests
 
 ## 🏆 Evaluation Criteria Coverage
 ✅ **Problem description** – domain-specific RAG with clear value proposition  
@@ -262,12 +294,11 @@ MIT License.
 - **DataTalksClub** for the LLM Zoomcamp
 - **Wikipedia** for the comprehensive domain-specific knowledge base
 - **Groq** for free access to high-performance LLM APIs
-- **FAISS** and **ChromaDB** for vector database capabilities
-- **Prefect** and **DLT** for robust data orchestration
-- **Grafana** and **Prometheus** for monitoring infrastructure
+- **FAISS** and **QDRANTB** for vector database capabilities
+- **DLT** for robust data orchestration
 - **Perplexity AI** for inspiration on transparent, cited responses
 
-We extend our sincere gratitude to **Alexey Grigorev** and the **DataTalks Club** team for their expert guidance, valuable Slack support, and for creating this exceptional learning opportunity through the LLM course.
+I extend my sincere gratitude to **Alexey Grigorev** and the **DataTalks Club** team for their expert guidance, valuable Slack support, and for creating this exceptional learning opportunity through the LLM course.
 
 ## 👤 Author
 Developed as part of **LLM Zoomcamp 2025** by **Mona Hamid**.
