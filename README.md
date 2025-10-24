@@ -113,6 +113,19 @@ We evaluated multiple retrieval methods, vector databases, chunking strategies, 
 
 ## 📊 Evaluation Summary
 
+# 🧩 Chunking Evaluation — Hybrid & Weighted Chunking
+
+To optimize document retrieval and contextual accuracy, multiple chunking strategies were evaluated before ingestion:
+
+| **Method** | **Description** | **Result** |
+|-------------|-----------------|-------------|
+| **Fixed-size (500 tokens)** | Splits text into equal token lengths | ⚡ Fast, but led to context fragmentation |
+| **Semantic chunking** *(via sentence-transformers)* | Splits intelligently at topic boundaries | 🎯 Achieved the best recall accuracy |
+| **Weighted hybrid chunking** | Combines semantic boundaries with token overlap for continuity | 🏆 **Final choice** — 0.81 cosine similarity |
+
+✅ **Outcome:** Weighted hybrid chunking improved retrieval accuracy by **+8%** compared to fixed-size splits.  
+✅ **Best Practices:** Enables **Hybrid Search** and **Chunk Optimization**, enhancing both recall and contextual coherence.
+
 ### Retrieval Evaluation
 
 | Method | Cosine Sim | Recall@5 | Precision@5 | MRR | Notes |
@@ -139,17 +152,7 @@ We evaluated multiple retrieval methods, vector databases, chunking strategies, 
 | Few-shot (Tutor Style) | 0.80 | 0.78 | 0.87 | ✅ |
 | Chain-of-Thought | 0.84 | 0.82 | 0.85 | ✅ |
 
-✅ **Winner:** Few-shot Prompt with Llama-3.3-70B (Groq)  
-✅ Evaluated using LLM-as-a-Judge (`evaluate_llm_judge.py`)
 
-##Chunking Evaluation — Hybrid & Weighted Chunking
-Method	Description	Result
-Fixed-size (500 tokens)	Equal token splits	Fast, but context loss
-Semantic chunking (via sentence-transformers)	Splits at topic boundaries	Best accuracy for recall
-Weighted hybrid chunking	Combines semantic boundaries + token overlap	Chosen final (0.81 cosine sim)
-
-✅ Weighted hybrid chunking improved retrieval accuracy by +8% over simple fixed chunks.
-✅ Supports Best Practices (Hybrid Search + Chunk Optimization).
 
 ## ⚙️ Ingestion Pipeline (DLT → Qdrant)
 
