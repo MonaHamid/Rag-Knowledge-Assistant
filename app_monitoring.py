@@ -123,7 +123,7 @@ MET_LIVE_USERS = Gauge(
 
 # tiny helper for pushgateway
 
-ddef push_metrics():
+def push_metrics():
     """Push metrics to Grafana Cloud remote_write endpoint via HTTP POST."""
     if not (PUSHGATEWAY_URL and PROM_API_KEY and PROM_USERNAME):
         return
