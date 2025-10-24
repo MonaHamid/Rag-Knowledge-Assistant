@@ -19,6 +19,8 @@ import time
 import json
 import datetime as dt
 from pathlib import Path
+import base64
+import requests
 
 import streamlit as st
 import numpy as np
